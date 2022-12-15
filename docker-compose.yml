@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  web:
+    container_name: web-phalcon5-relationships
+    image: ls/web-phalcon5-relationships
+    restart: always
+    volumes:
+      - './phalcon5_app:/src'
+    ports:
+      - '8050:80'
+    build:
+      dockerfile: Dockerfile
+      context: ./web
+  db:
+    container_name: db-phalcon5-relationships
+    image: ls/db-phalcon5-relationships
+    restart: always
+    volumes:
+      - 'db_pgdata-phalcon5-relationships:/var/lib/postgresql/data'
+      - '${INITDB}:/docker-entrypoint-initdb.d'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: '${POSTGRES_PASS}'
+    ports:
+      - '5460:5432'
+    build:
+      dockerfile: Dockerfile
+      context: ./db
+volumes:
+  db_pgdata-phalcon5-relationships: {}
