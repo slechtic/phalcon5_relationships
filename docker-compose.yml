@@ -16,7 +16,6 @@ services:
     image: ls/db-phalcon5-relationships
     restart: always
     volumes:
-      - 'db_pgdata-phalcon5-relationships:/var/lib/postgresql/data'
       - '${INITDB}:/docker-entrypoint-initdb.d'
     environment:
       POSTGRES_USER: 'postgres'
@@ -26,5 +25,3 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./db
-volumes:
-  db_pgdata-phalcon5-relationships: {}

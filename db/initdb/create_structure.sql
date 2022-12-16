@@ -4,7 +4,6 @@ CREATE DATABASE phalcon_relationships WITH ENCODING='UTF-8';
 
 CREATE TABLE document_histories (
     id serial4 NOT NULL,
-    event_type varchar(255),
     id_document int4 NOT NULL,
     CONSTRAINT document_histories_pkey PRIMARY KEY (id)
 );
@@ -20,4 +19,4 @@ ALTER TABLE document_histories ADD CONSTRAINT "fk.document_histories.id_document
 INSERT INTO documents (id, number) VALUES (1, '1');
 INSERT INTO documents (id, number) VALUES (2, '2');
 
-INSERT INTO document_histories (event_type, id_document) VALUES ('test', 2);
+INSERT INTO document_histories (id_document) VALUES (2);

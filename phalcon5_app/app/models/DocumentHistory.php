@@ -9,14 +9,9 @@ class DocumentHistory extends Model {
 	 */
     protected $id;
 	
-	/**
-	 * @var string
-	 */
-    protected $eventType;
-	
 	public function initialize() {
 		$this->setSource('document_histories');
-		
+
 		$this->belongsTo('idDocument', Document::class, 'id',['alias' => 'document']);
 	}
 	
@@ -29,6 +24,20 @@ class DocumentHistory extends Model {
 	}
 	
 	/**
+	 * @return int
+	 */
+	public function getId(): int {
+		return $this->id;
+	}
+	
+	/**
+	 * @param int $id
+	 */
+	public function setId(int $id): void {
+		$this->id = $id;
+	}
+	
+	/**
 	 * @param Document $document
 	 * @return $this
 	 */
@@ -38,28 +47,12 @@ class DocumentHistory extends Model {
 	}
 	
 	/**
-	 * @return string
-	 */
-	public function getEventType(): string {
-		return $this->eventType;
-	}
-	
-	/**
-	 * @param string $eventType
-	 */
-	public function setEventType(string $eventType): void {
-		$this->eventType = $eventType;
-	}
-	
-	/**
 	 * @return string[]
 	 */
 	public function columnMap()	{
 		return [
 			'id' => 'id',
-			'event_type' => 'eventType',
 			'id_document' => 'idDocument'
 		];
 	}
- 
 }

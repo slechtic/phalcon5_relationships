@@ -16,7 +16,7 @@ class IndexController extends Controller {
 
 		echo 'Current document number: ' . $document->getNumber() . '<br/>';
 
-		$document->setNumber('1.2');
+		$document->setNumber($document->getNumber() + 1);
 
 		echo 'Document number changed to: ' . $document->getNumber() . '<br/>';
 
@@ -40,7 +40,7 @@ class IndexController extends Controller {
 
 		echo 'Current document number: ' . $relatedDocument->getNumber() . '<br/>';
 
-		$relatedDocument->setNumber('2.1');
+		$relatedDocument->setNumber($relatedDocument->getNumber() + 1);
 
 		echo 'Document number changed to: ' . $relatedDocument->getNumber() . '<br/>';
 

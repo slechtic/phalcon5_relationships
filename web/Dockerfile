@@ -49,6 +49,11 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
     && apt-get clean \
     && rm -rf /var/lib/apt/lists
 
+RUN update-alternatives --set php /usr/bin/php${PHP_VERSION}
+RUN update-alternatives --set phar /usr/bin/phar${PHP_VERSION}
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar${PHP_VERSION}
+
+#install phalcon
 RUN pecl channel-update pecl.php.net
 RUN pecl install phalcon-${PHALCON_VERSION}
 RUN echo extension=phalcon.so > /etc/php/${PHP_VERSION}/apache2/conf.d/25-phalcon.ini
